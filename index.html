@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    function validateForm() {
+      let x = document.forms["myForm"]["username"].value;
+      let y = document.forms["myForm"]["password"].value;
+      // let userErr = document.getElementById("user-err");
+      // let passErr = document.getElementById("pass-err");
+
+
+
+
+      if (x == "" && y == "") {
+
+        alert("User Name  and password must be filled out");
+        // userErr.style.display ="block";
+        // passErr.style.display ="block";
+
+
+
+        return false;
+        // userErr.style.display ="none";
+        // passErr.style.display ="none";
+      }
+      if(y == ""){
+        alert("password must be filled out");
+        return false;
+
+      }
+      if(x == ""){
+        alert("Username must be filled out");
+        // userErr.style.display ="block";
+
+        return false;
+        // userErr.style.display ="none";
+      }
+      if (y.length < 8) {
+        alert("Your password must be at least 8 characters");
+
+        return false;
+      }
+      if (y.search(/[a-z]/i) < 0) {
+        alert("Your password must contain at least one character.");
+        return false;
+      }
+      if (y.search(/[0-9]/) < 0) {
+        alert("Your password must contain at least one digit.");
+        return false;
+      }
+      if (x.search(/[0-9]/) > 0) {
+        alert("number cannot be used in username");
+        return false;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <h2>JavaScript Validation</h2>
+
+    <form name="myForm" action="./action_page.html" onsubmit="return validateForm()" method="post">
+      <input type="text" name="username" placeholder="Enter User Name" />
+      <!-- <span id="user-err" >username</span> -->
+      <input type="password" name="password" placeholder="Enter  Password" />
+      <!-- <span id="pass-err">password</span> -->
+      <input type="submit" value="Submit">
+
+    </form>
+  </div>
+</body>
+
+</html>
